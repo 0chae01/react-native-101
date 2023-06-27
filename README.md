@@ -41,4 +41,13 @@
 
 ### StatusBar
 
-- StatusBar는 3rd-party 패키지로, 모바일 운영체제의 상태바를 말한다.
+- Expo에서 사용된 StatusBar는 3rd-party 패키지로, 모바일 운영체제의 상태바를 말한다.
+- React Native에서 제공하는 StatusBar 컴포넌트와 props와 함수가 다르다.(자체적으로 만든 컴포넌트이기 때문)
+
+### Third-party packages
+
+- React Native는 더 빠른 속도를 위해, 그리고 사람들이 컴포넌트와 API를 쉽게 만들 수 있게 만들수 있도록 많은 컴포넌트들과 API들을 없앴다.
+- 컴포넌트는 화면에 렌더링할 항목이다. ex) View, StatusBar
+- API는 자바스크립트 코드로, 다양한 기능들을 제공해준다. ex) Vibration
+- React Native 팀이 제공하는 패키지 외에 Third-party 패키지들은 React Native Directory에서 볼 수 있다.
+- Expo 팀은 자체적으로 Packages와 APIs를 만들었고, 이를 Expo SDK라고 한다.
