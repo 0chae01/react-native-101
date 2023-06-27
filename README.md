@@ -59,3 +59,18 @@
   - React Native에서는 display: block, inline-block, grid가 없다. Flexbox만 있다.
   - 요소의 기본 속성이 Flex로, direction은 column으로 설정된다.
   - 다양한 기기의 사이즈를 고려해 아이콘, 아바타가 아닌 레이아웃에는 width와 height 속성과 픽셀값을 사용하지 않고, flex size 비율을 설정해 준다.
+
+### ScrollView
+
+- React Native에서는 웹과 달리 아이템이 많아졌을 때 자동으로 스크롤이 생기지 않는다.
+- ScrollView 컴포넌트를 사용하면 스크롤을 할 수 있다.
+- ScrollView의 스타일은 style prop이 아닌 contentContainerStyle prop을 사용해야 한다.
+- ScrollView는 스크린보다 더 나아가야 하기 때문에 Flex 사이즈를 줄 필요가 없다.
+- horizontal 속성으로 가로 스크롤 구현이 가능하다.
+- pagingEnabled 속성으로 페이지가 생성된다.
+- showsHorizontalScrollIndicator 속성으로 페이지 indicator를 제어할 수 있다.
+- indicatorStyle 속성으로 indicator 스타일을 변경할 수 있다.(only iOS)
+
+### Dimensions
+
+- 기기의 사이즈를 기준으로 값을 설정하고 싶을 때 Dimensions API을 이용해 화면 크기를 얻을 수 있다.
