@@ -74,3 +74,10 @@
 ### Dimensions
 
 - 기기의 사이즈를 기준으로 값을 설정하고 싶을 때 Dimensions API을 이용해 화면 크기를 얻을 수 있다.
+
+### Location
+
+- 위치 정보와 관련된 Expo API. 권한요청을 하고, 유저의 현재 위치를 받아올 수 있고, 이동중인 위치를 계속해서 검색하는 등 다양한 요청이 가능하다.
+- requestForegroundPermissionsAsync : 유저에게 앱을 사용하는 동안의 위치정보조회동의를 요청할 수 있다.
+- getCurrentPositionAsync : accuracy 옵션을 받아 위치 정보를 받아온다.
+- reverseGeocodeAsync : latitude, longitude와 옵션을 가지고 주소를 받아온다.
