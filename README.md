@@ -51,3 +51,11 @@
 - API는 자바스크립트 코드로, 다양한 기능들을 제공해준다. ex) Vibration
 - React Native 팀이 제공하는 패키지 외에 Third-party 패키지들은 React Native Directory에서 볼 수 있다.
 - Expo 팀은 자체적으로 Packages와 APIs를 만들었고, 이를 Expo SDK라고 한다.
+
+### Layout System
+
+- React Native의 Flexbox는 웹에서와 거의 같은 방식이다.
+- React Native의 Flexbox와 웹의 Flexbox의 차이점
+  - React Native에서는 display: block, inline-block, grid가 없다. Flexbox만 있다.
+  - 요소의 기본 속성이 Flex로, direction은 column으로 설정된다.
+  - 다양한 기기의 사이즈를 고려해 아이콘, 아바타가 아닌 레이아웃에는 width와 height 속성과 픽셀값을 사용하지 않고, flex size 비율을 설정해 준다.
