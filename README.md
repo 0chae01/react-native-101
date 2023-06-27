@@ -29,3 +29,16 @@
 - `npx creat-expo-app [앱이름]`으로 CRA처럼 프로젝트를 시작한다.
 - `npm start`를 하면 qr코드와 commands가 보인다.
 - `npx expo login`으로 Expo계정 로그인을 하고 다시 `npm start`를 해주면 모바일 Expo앱에 해당 프로젝트가 보인다. 코드를 수정하고 저장하면 Expo앱에 바로 반영되는 것을 확인할 수 있다.
+
+## #2 WEATHER APP
+
+### Rules of Native
+
+- React Native는 웹사이트가 아니기 때문에 html을 쓰지 않는다. 즉 div를 쓸 수 없다. 대신 View를 사용한다.(import 필수)
+- React Native에서 모든 text는 Text 컴포넌트 안에 써야 한다.
+- style 속성을 사용할 수 있지만 모든 스타일이 사용가능한 것은 아니다. ex) border 속성은 사용불가
+- `StyleSheet.create`는 styles object를 생성하는 데 사용한다. `StyleSheet.create`를 사용하면 CSS 자동완성 기능을 사용할 수 있고, 스타일 컴포넌트들을 정리하기 좋다.
+
+### StatusBar
+
+- StatusBar는 3rd-party 패키지로, 모바일 운영체제의 상태바를 말한다.
