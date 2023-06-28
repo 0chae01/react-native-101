@@ -94,7 +94,7 @@
 
 - Expo에서 제공하는 아이콘들을 이용해 날씨 아이콘을 출력한다.
 
-## #2 WORK HARD TRAVEL HARD APP
+## #3 WORK HARD TRAVEL HARD APP
 
 ### TouchableOpacity
 
@@ -123,3 +123,14 @@
 - delayLongPress도 설정할 수 있다.(얼마나 오래 누르면 반응할지)
 - disabled 속성도 있다.
 - hitSlop 속성은 요소 바깥 어디까지의 터치를 감지할지 정하는 속성이다.(손가락 터치 상황 고려)
+
+### TextInput
+
+- TextInput은 React Native에서 유저가 text를 쓸 수 있는 유일한 방법이다. HTML에서의 textarea나 input 등이 없다.
+- placeholder 속성 설정이 가능하다.
+- onFocus 속성은 터치했을 때 입력할 준비가 됐을 때를 말한다.
+- keyboardType으로 이메일이나 전화번호를 입력할 때 등 특정 상황의 키보드타입을 설정할 수 있다.
+- returnKeyType 속성으로 자판의 return 버튼의 타입을 바꿀 수 있다. 안드로이드에서만 쓸 수 있는 returnKeyLabel 속성으로는 원하는 아무거나 쓸 수 있다.
+- secureTextEntry 속성은 비밀번호를 쓸 때처럼 텍스트 입력을 안보이게 처리해준다.
+- multiline 속성은 한 줄 이상 텍스트를 쓰는 경우에 사용한다.
+- onChangeText로 입력한 Text를 받을 수 있다. 브라우저에서는 event나 target이 있었지만 RN에서는 없다.
