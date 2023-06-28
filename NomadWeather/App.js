@@ -9,9 +9,20 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
+import { Fontisto } from "@expo/vector-icons";
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const API_KEY = "dc8b200181bdf176fd48e472b91d4d85";
+
+const icons = {
+  Clear: "day-sunny",
+  Clouds: "cloudy",
+  Rain: "rain",
+  Atmosphere: "cloudy-gusts",
+  Snow: "snow",
+  Drizzle: "day-rain",
+  Thunderstorm: "lightning",
+};
 
 export default function App() {
   const [city, setCity] = useState("Loading...");
@@ -62,19 +73,24 @@ export default function App() {
             <ActivityIndicator
               color="white"
               size="large"
-              style={{ marginTop: 10 }}
+              style={{ marginVertical: 110 }}
             />
           </View>
         ) : (
           days.map((day, index) => {
             return (
               <View key={index} style={styles.day}>
-                <Text style={styles.temp}>
-                  {`${parseFloat(day.main.temp).toFixed(1)}°`}
-                </Text>
-                <Text style={styles.description}>{day.weather[0].main}</Text>
+                <Fontisto
+                  name={icons[day.weather[0].main]}
+                  size={68}
+                  color="white"
+                />
                 <Text style={styles.tinyText}>
                   {day.weather[0].description}
+                </Text>
+                {/* <Text style={styles.description}>{day.weather[0].main}</Text> */}
+                <Text style={styles.temp}>
+                  {`${parseFloat(day.main.temp).toFixed(1)}°`}
                 </Text>
               </View>
             );
@@ -97,7 +113,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cityName: {
-    fontSize: 68,
+    color: "white",
+    fontSize: 48,
     fontWeight: 500,
   },
   weather: {},
@@ -106,15 +123,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   temp: {
+    color: "white",
     marginBottom: 20,
     marginLeft: 40,
     fontSize: 120,
   },
   description: {
+    color: "white",
     marginTop: -30,
     fontSize: 60,
   },
   tinyText: {
+    color: "white",
     fontSize: 20,
+    marginTop: 10,
   },
 });

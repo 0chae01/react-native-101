@@ -89,3 +89,7 @@
 ### ActivityIndicator
 
 - React Native에서 제공하는 로딩 상태 표시 indicator. iOS와 안드로이드에서 각각 디자인이 다르다.
+
+### Expo Icons
+
+- Expo에서 제공하는 아이콘들을 이용해 날씨 아이콘을 출력한다.
