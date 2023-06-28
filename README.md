@@ -95,3 +95,31 @@
 - Expo에서 제공하는 아이콘들을 이용해 날씨 아이콘을 출력한다.
 
 ## #2 WORK HARD TRAVEL HARD APP
+
+### TouchableOpacity
+
+- 누르는 이벤트를 listen할 준비가 된 View라고 할 수 있다.
+- 터치를 할 때 투명해지는 모습을 볼 수 있다.
+- activeOpacity 속성으로 눌렀을 때의 투명도를 조절 가능하다.
+
+### TouchableHighlight
+
+- TouchableOpacity 보다 많은 속성을 가지고 있다.
+- 요소를 클릭했을 때 배경색이 바뀌도록 해준다.
+- onPress 속성은 해당 버튼을 눌렀을 때(눌렀다 뗄 때)의 이벤트를 말한다.
+- onPressIn은 손가락이 그 영역에 들어갈 때, onPressOut은 벗어날 때, onLongPress는 손가락이 영역에 들어가서 오랫동안 머무를 때를 말한다.
+- TouchableOpacity와 달리 underlayColor를 설정해 배경색도 바꿔줄 수 있다.
+- activeOpacity 속성으로 눌렀을 때의 투명도를 조절 가능하다.
+
+### TouchableWithoutFeedback
+
+- 터치 이벤트 리스닝은 가능하지만 그래픽이나 다른 UI 반응을 보여주지 않는다.
+- onPress, onPressIn, onPressOut 등의 이벤트들이 포함되어 있다.
+
+### Pressable
+
+- TouchableWithoutFeedback과 같지만 더 섬세한 설정이 가능하다.(더 최근의 기술)
+- onPress, onPressIn, onPressOut 등의 이벤트를 리스닝하고, onLongPress, onPressOut 등 다른 이벤트까지 조합되어 발생한다.
+- delayLongPress도 설정할 수 있다.(얼마나 오래 누르면 반응할지)
+- disabled 속성도 있다.
+- hitSlop 속성은 요소 바깥 어디까지의 터치를 감지할지 정하는 속성이다.(손가락 터치 상황 고려)
