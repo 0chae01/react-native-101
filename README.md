@@ -190,3 +190,15 @@
 - `editToDo`함수에서 `editingText`가 비어있다면 alert 후 return해주고, 그렇지 않다면 `editingText`를 현재 toDo의 text에 할당한다. toDo의 `editing`을 `false`로 변경해 저장하고, `editingText`를 빈 문자열로 초기화한다.
 - _Problem : 수정중인 상태에서 다른곳을 클릭했을 때 alert을 띄울 더 좋은 방법은 없을까?_
 - _Problem : 수정중인 상태에서 새로고침을 하면 수정중인 텍스트가 사라진다._
+
+## #4 PUBLISHING APPS
+
+### publish expo app
+
+- expo cli가 현재는 지원되지 않아서, 명령어로 publish를 해야하는데, 이 명령어 역시 2024-02-12까지만 사용 가능하다.
+- `ese update`명령어로 publish 시도할 예정
+
+### react-native-web
+
+- react-native-web을 사용하면 웹에서도 react-native로 만든 프로젝트를 실행시킬 수 있다. View를 받아서 div로, Image는 img로, Text는 span으로 바꾸는 등 웹에 맞는 태그로 변경시킨다. AsyncStorage도 localStorage로 작동한다.
+- Alert은 web에서 작동하지 않는다.
