@@ -165,3 +165,12 @@
 
 - RN에서 제공하는 Alert API에서 alert, propmpt 메소드를 사용할 수 있다.(단, propmpt는 iOS only)
 - Alert에서는 사용자가 Alert title과 message, buttons를 커스텀할 수 있다. buttons는 text, onPress, style(iOSonly), isPreferred(iOSonly)를 갖는 객체 배열이다.
+
+### [Challenge1] 새로고침 시 원래 있던 페이지로 유지하기
+
+- Work 버튼 클릭 시 AsyncStorage에 'true' 저장, Travel 클릭 시 'false' 저장
+- 첫 렌더링 시 AsyncStorage에서 값을 불러와 'true'라면 `setWorking(true)` 'false'라면 `setWorking(false)`
+
+### [Challenge2] Todo 완료 구현하기
+
+### [Challenge3] Todo 수정 구현하기

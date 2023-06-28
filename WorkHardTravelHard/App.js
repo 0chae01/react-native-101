@@ -13,20 +13,32 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { theme } from "./colors";
 import { Fontisto } from "@expo/vector-icons";
 
-const STORAGE_KEY = "@toDos";
+const STORAGE_TODOS = "@toDos";
+const STORAGE_PAGE = "@page";
 
 export default function App() {
   const [working, setWorking] = useState(true);
   const [text, setText] = useState("");
   const [toDos, setToDos] = useState({});
-  const travel = () => setWorking(false);
-  const work = () => setWorking(true);
+  const travel = async () => {
+    setWorking(false);
+    await AsyncStorage.setItem(STORAGE_PAGE, "false");
+  };
+  const work = async () => {
+    setWorking(true);
+    await AsyncStorage.setItem(STORAGE_PAGE, "true");
+  };
   const onChangeText = (payload) => setText(payload);
   const saveToDos = async (toSave) => {
-    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+    await AsyncStorage.setItem(STORAGE_TODOS, JSON.stringify(toSave));
+  };
+  const setPage = async () => {
+    const isWorking = await AsyncStorage.getItem(STORAGE_PAGE);
+    setWorking(isWorking === "true" ? true : false);
   };
   const loadToDos = async () => {
-    const s = await AsyncStorage.getItem(STORAGE_KEY);
+    setPage();
+    const s = await AsyncStorage.getItem(STORAGE_TODOS);
     s ? setToDos(JSON.parse(s)) : null;
   };
   useEffect(() => {
@@ -57,7 +69,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
       <View style={styles.header}>
         <TouchableOpacity onPress={work}>
           <Text
