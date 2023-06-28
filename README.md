@@ -81,3 +81,11 @@
 - requestForegroundPermissionsAsync : 유저에게 앱을 사용하는 동안의 위치정보조회동의를 요청할 수 있다.
 - getCurrentPositionAsync : accuracy 옵션을 받아 위치 정보를 받아온다.
 - reverseGeocodeAsync : latitude, longitude와 옵션을 가지고 주소를 받아온다.
+
+### WeatherAPI
+
+- openweathermap.org에서 무료로 사용할 수 있는 2가지 WeatherAPI 중 `3-hour Forecast 5 days API`를 사용해 매일 일정 시간의 날씨를 받아온다.
+
+### ActivityIndicator
+
+- React Native에서 제공하는 로딩 상태 표시 indicator. iOS와 안드로이드에서 각각 디자인이 다르다.
