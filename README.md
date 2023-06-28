@@ -173,6 +173,7 @@
 
 ### [Challenge2] Todo 완료 구현하기
 
+- toDo에 completed 필드를 추가한다.
 - 미완료 시 checkbox와 완료 시 checkbox 두 개의 아이콘을 사용한다.
 - `Pressable`을 사용하여 UI애니메이션 없이, `hitSlop`속성으로 터치범위를 넓힌다.
 - 버튼을 눌렀을 때 실행되는 toggleToDo 함수에서는, 원래 toDos 중 해당 키를 가진 todo의 completed를 토글시킨 newToDos로 toDos 상태를 업데이트하고, AsyncStorage에 저장한다.
@@ -180,3 +181,12 @@
 - checkbox 아이콘은 completed 값에 따라 다른 아이콘을 렌더링한다.
 
 ### [Challenge3] Todo 수정 구현하기
+
+- toDo에 editing 필드를 추가한다.
+- 수정하기 아이콘을 클릭하면 `setEditing`함수가 실행된다. 만약 다른 toDos 중 `editing`이 `true`인 항목이 있다면 alert을 띄우고 return시킨다. `editingText` state에 원래 toDo text를 저장하고, toDo의 `editing`을 `true`로 변경해 저장한다.
+- toDo의 `editing`이 `true`일때는 toDo text 대신 `TextInput`과 체크 아이콘이 나타나고, `false`일때는 다시 수정버튼이 나타난다.
+- `TextInput`의 `onChangeText`에는 `setEditingText`를 전달해준다.
+- `TextInput`의 `onSubmitEditing` 또는 체크 아이콘의 `onPress`에는 `editToDo`함수를 전달해준다.
+- `editToDo`함수에서 `editingText`가 비어있다면 alert 후 return해주고, 그렇지 않다면 `editingText`를 현재 toDo의 text에 할당한다. toDo의 `editing`을 `false`로 변경해 저장하고, `editingText`를 빈 문자열로 초기화한다.
+- _Problem : 수정중인 상태에서 다른곳을 클릭했을 때 alert을 띄울 더 좋은 방법은 없을까?_
+- _Problem : 수정중인 상태에서 새로고침을 하면 수정중인 텍스트가 사라진다._

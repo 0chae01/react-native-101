@@ -13,6 +13,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { theme } from "./colors";
 import { Fontisto } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 const STORAGE_TODOS = "@toDos";
 const STORAGE_PAGE = "@page";
@@ -20,16 +21,27 @@ const STORAGE_PAGE = "@page";
 export default function App() {
   const [working, setWorking] = useState(true);
   const [text, setText] = useState("");
+  const [editingText, setEditingText] = useState("");
   const [toDos, setToDos] = useState({});
   const travel = async () => {
+    if (Object.values(toDos).find((todo) => todo.editing === true)) {
+      Alert.alert("수정이 완료되지 않았습니다.");
+      return;
+    }
     setWorking(false);
     await AsyncStorage.setItem(STORAGE_PAGE, "false");
   };
   const work = async () => {
+    if (Object.values(toDos).find((todo) => todo.editing === true)) {
+      Alert.alert("수정이 완료되지 않았습니다.");
+      return;
+    }
     setWorking(true);
     await AsyncStorage.setItem(STORAGE_PAGE, "true");
   };
-  const onChangeText = (payload) => setText(payload);
+  const onChangeText = (payload) => {
+    setText(payload);
+  };
   const saveToDos = async (toSave) => {
     await AsyncStorage.setItem(STORAGE_TODOS, JSON.stringify(toSave));
   };
@@ -46,16 +58,34 @@ export default function App() {
     loadToDos();
   }, []);
   const addToDo = async () => {
+    if (Object.values(toDos).find((todo) => todo.editing === true)) {
+      Alert.alert("수정이 완료되지 않았습니다.");
+      setText("");
+      return;
+    }
     if (text === "") return;
     const newToDos = {
       ...toDos,
-      [Date.now()]: { text, working, completed: false },
+      [Date.now()]: {
+        text,
+        working,
+        completed: false,
+        editing: false,
+        editingText: editingText,
+      },
     };
     setToDos(newToDos);
     await saveToDos(newToDos);
     setText("");
   };
   const deleteToDo = (key) => {
+    if (
+      Object.values(toDos).find((todo) => todo.editing === true) &&
+      editingText
+    ) {
+      Alert.alert("수정이 완료되지 않았습니다.");
+      return;
+    }
     Alert.alert("Delete To Do", "Are you sure?", [
       { text: "Cancel" },
       {
@@ -70,7 +100,39 @@ export default function App() {
       },
     ]);
   };
+  const setEditing = async (key) => {
+    if (Object.values(toDos).find((todo) => todo.editing === true)) {
+      Alert.alert("수정이 완료되지 않았습니다.");
+      return;
+    }
+    setEditingText(toDos[key].text);
+    const newToDos = { ...toDos };
+    newToDos[key].editing = true;
+    setToDos(newToDos);
+    await saveToDos(newToDos);
+  };
+
+  const onChangeEditText = (payload) => {
+    setEditingText(payload);
+  };
+  const editToDo = async (key) => {
+    if (editingText === "") {
+      Alert.alert("텍스트를 입력해주세요");
+      return;
+    }
+    const newToDos = { ...toDos };
+    newToDos[key].text = editingText;
+    newToDos[key].editing = false;
+    setToDos(newToDos);
+    await saveToDos(newToDos);
+    setEditingText("");
+  };
+
   const toggleToDo = (key) => {
+    if (Object.values(toDos).find((todo) => todo.editing === true)) {
+      Alert.alert("수정이 완료되지 않았습니다.");
+      return;
+    }
     const newToDos = { ...toDos };
     newToDos[key].completed = !newToDos[key].completed;
     setToDos(newToDos);
@@ -115,18 +177,50 @@ export default function App() {
                 <TouchableOpacity onPress={() => deleteToDo(key)}>
                   <Fontisto name="trash" size={18} color={theme.gray} />
                 </TouchableOpacity>
-                <Text
-                  style={
-                    toDos[key].completed
-                      ? styles.completedToDoText
-                      : styles.toDoText
-                  }
-                >
-                  {toDos[key].text}
-                </Text>
+
+                {toDos[key].editing ? (
+                  <TextInput
+                    onChangeText={onChangeEditText}
+                    onSubmitEditing={() => editToDo(key)}
+                    returnKeyType="done"
+                    value={editingText}
+                    placeholder={
+                      working ? "Add a To Do" : "Where do you want to go?"
+                    }
+                    style={styles.editingInput}
+                  />
+                ) : (
+                  <Text
+                    style={
+                      toDos[key].completed
+                        ? styles.completedToDoText
+                        : styles.toDoText
+                    }
+                  >
+                    {toDos[key].text}
+                  </Text>
+                )}
               </View>
               <View style={styles.todoRight}>
-                <Pressable onPress={() => toggleToDo(key)} hitSlop={20}>
+                {toDos[key].editing ? (
+                  <Pressable
+                    style={{ marginRight: 10 }}
+                    onPress={() => editToDo(key)}
+                    hitSlop={10}
+                  >
+                    <MaterialIcons name="check" size={20} color="white" />
+                  </Pressable>
+                ) : (
+                  <TouchableOpacity
+                    style={{ marginRight: 10 }}
+                    onPress={() => setEditing(key)}
+                    hitSlop={10}
+                  >
+                    <MaterialIcons name="edit" size={20} color={theme.gray} />
+                  </TouchableOpacity>
+                )}
+
+                <Pressable onPress={() => toggleToDo(key)} hitSlop={10}>
                   {toDos[key].completed ? (
                     <Fontisto
                       name="checkbox-active"
@@ -174,6 +268,17 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     fontSize: 18,
   },
+  editingInput: {
+    flex: 2,
+    backgroundColor: "white",
+    fontSize: 16,
+    fontWeight: "500",
+    marginVertical: -10,
+    marginHorizontal: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderRadius: 15,
+  },
   toDo: {
     backgroundColor: theme.todoBg,
     marginBottom: 10,
@@ -198,7 +303,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   todoLeft: {
+    flex: 1,
     flexDirection: "row",
+    alignItems: "center",
   },
   todoRight: {
     flexDirection: "row",
