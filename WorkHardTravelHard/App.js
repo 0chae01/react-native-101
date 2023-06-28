@@ -5,6 +5,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Pressable,
   TextInput,
   ScrollView,
   Alert,
@@ -46,7 +47,10 @@ export default function App() {
   }, []);
   const addToDo = async () => {
     if (text === "") return;
-    const newToDos = { ...toDos, [Date.now()]: { text, working } };
+    const newToDos = {
+      ...toDos,
+      [Date.now()]: { text, working, completed: false },
+    };
     setToDos(newToDos);
     await saveToDos(newToDos);
     setText("");
@@ -65,6 +69,12 @@ export default function App() {
         style: "destructive",
       },
     ]);
+  };
+  const toggleToDo = (key) => {
+    const newToDos = { ...toDos };
+    newToDos[key].completed = !newToDos[key].completed;
+    setToDos(newToDos);
+    saveToDos(newToDos);
   };
 
   return (
@@ -101,10 +111,38 @@ export default function App() {
         {Object.keys(toDos).map((key) =>
           toDos[key].working === working ? (
             <View style={styles.toDo} key={key}>
-              <Text style={styles.toDoText}>{toDos[key].text}</Text>
-              <TouchableOpacity onPress={() => deleteToDo(key)}>
-                <Fontisto name="trash" size={18} color={theme.gray} />
-              </TouchableOpacity>
+              <View style={styles.todoLeft}>
+                <TouchableOpacity onPress={() => deleteToDo(key)}>
+                  <Fontisto name="trash" size={18} color={theme.gray} />
+                </TouchableOpacity>
+                <Text
+                  style={
+                    toDos[key].completed
+                      ? styles.completedToDoText
+                      : styles.toDoText
+                  }
+                >
+                  {toDos[key].text}
+                </Text>
+              </View>
+              <View style={styles.todoRight}>
+                <Pressable onPress={() => toggleToDo(key)} hitSlop={20}>
+                  {toDos[key].completed ? (
+                    <Fontisto
+                      name="checkbox-active"
+                      size={20}
+                      color={theme.gray}
+                    />
+                  ) : (
+                    <Fontisto
+                      name="checkbox-passive"
+                      size={20}
+                      color={theme.gray}
+                      style={{ marginRight: 2 }}
+                    />
+                  )}
+                </Pressable>
+              </View>
             </View>
           ) : null
         )}
@@ -146,9 +184,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  completedToDoText: {
+    color: theme.gray,
+    textDecorationLine: "line-through",
+    fontSize: 16,
+    fontWeight: "500",
+    marginLeft: 10,
+  },
   toDoText: {
     color: "white",
     fontSize: 16,
     fontWeight: "500",
+    marginLeft: 10,
+  },
+  todoLeft: {
+    flexDirection: "row",
+  },
+  todoRight: {
+    flexDirection: "row",
   },
 });

@@ -173,4 +173,10 @@
 
 ### [Challenge2] Todo 완료 구현하기
 
+- 미완료 시 checkbox와 완료 시 checkbox 두 개의 아이콘을 사용한다.
+- `Pressable`을 사용하여 UI애니메이션 없이, `hitSlop`속성으로 터치범위를 넓힌다.
+- 버튼을 눌렀을 때 실행되는 toggleToDo 함수에서는, 원래 toDos 중 해당 키를 가진 todo의 completed를 토글시킨 newToDos로 toDos 상태를 업데이트하고, AsyncStorage에 저장한다.
+- toDoText는 completed 값에 따라 color와 textDecoration을 다르게 설정한다.
+- checkbox 아이콘은 completed 값에 따라 다른 아이콘을 렌더링한다.
+
 ### [Challenge3] Todo 수정 구현하기
