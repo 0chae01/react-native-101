@@ -26,7 +26,7 @@
 
 ### Creating The App
 
-- `npx creat-expo-app [앱이름]`으로 CRA처럼 프로젝트를 시작한다.
+- `npx create-expo-app [앱이름]`으로 CRA처럼 프로젝트를 시작한다.
 - `npm start`를 하면 qr코드와 commands가 보인다.
 - `npx expo login`으로 Expo계정 로그인을 하고 다시 `npm start`를 해주면 모바일 Expo앱에 해당 프로젝트가 보인다. 코드를 수정하고 저장하면 Expo앱에 바로 반영되는 것을 확인할 수 있다.
 
@@ -93,3 +93,5 @@
 ### Expo Icons
 
 - Expo에서 제공하는 아이콘들을 이용해 날씨 아이콘을 출력한다.
+
+## #2 WORK HARD TRAVEL HARD APP
