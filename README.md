@@ -134,3 +134,10 @@
 - secureTextEntry 속성은 비밀번호를 쓸 때처럼 텍스트 입력을 안보이게 처리해준다.
 - multiline 속성은 한 줄 이상 텍스트를 쓰는 경우에 사용한다.
 - onChangeText로 입력한 Text를 받을 수 있다. 브라우저에서는 event나 target이 있었지만 RN에서는 없다.
+- onSubmitEditing으로 submit 버튼을 눌렀을 때의 이벤트를 리스닝할 수 있다.
+
+### `Object.assign()`으로 Object state setting하기
+
+- toDos를 객체 상태로 저장할 때 mutate를 하지 않기 위해서 여러 개의 객체를 합쳐주는 assign함수를 사용한다.
+- assign의 타겟 객체를 빈 객체로 두고, 원래 상태의 toDos와 새로 등록할 toDos를 각각 다음 인자로 넣어서 새로운 객체로 만든다.
+- toDos객체 요소는 key를 `Date.now()`로 두고 입력받은 text와 working인지 여부를 객체형태로 value로 설정한다.
