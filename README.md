@@ -146,3 +146,12 @@
 ### 객체 맵핑하기
 
 `Object.keys()`로 객체의 key 배열을 받아 map을 돌려서, `toDos[key]`로 text를 출력할 수 있다.
+
+### 데이터 저장하기
+
+- `npx expo install @react-native-async-storage/async-storage`
+- Expo API `AsyncStorage`를 이용해 새로고침을 하거나 앱을 재실행 했을 때도 ToDo 데이터가 남아있도록 한다.
+- `AsyncStorage`는 브라우저의 `localStorage`처럼 사용할 수 있다.(사용법도 동일함)
+- 앱이 처음 실행될 때(useEffect) AsyncStorage에 저장된 toDos를 toDos state에 세팅하는 loadToDos 함수를 실행한다. 이때 저장된 값이 있을 때만 세팅하도록 처리한다.
+- toDo를 추가할 때는 AsyncStorage에 같은 key값으로 저장해준다.
+- localStorage와는 달리 getItem, setItem 처리 시 비동기 처리를 해주어야 한다.
