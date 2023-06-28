@@ -196,9 +196,18 @@
 ### publish expo app
 
 - expo cli가 현재는 지원되지 않아서, 명령어로 publish를 해야하는데, 이 명령어 역시 2024-02-12까지만 사용 가능하다.
-- `ese update`명령어로 publish 시도할 예정
+- `eas update`명령어로 publish 시도 but iOS는 결제가 필요하다... 일단 expo-cli publish로 진행
 
 ### react-native-web
 
 - react-native-web을 사용하면 웹에서도 react-native로 만든 프로젝트를 실행시킬 수 있다. View를 받아서 div로, Image는 img로, Text는 span으로 바꾸는 등 웹에 맞는 태그로 변경시킨다. AsyncStorage도 localStorage로 작동한다.
-- Alert은 web에서 작동하지 않는다.
+- Alert은 web에서 작동하지 않는다. react-native가 제공하는 Platform API로 현재 코드가 어떤 플랫폼에서 실행되고 있는지 알 수 있다. Platform API를 활용해 플랫폼별 alert처리를 해주어야 한다.
+
+### app.json
+
+- 애플리케이션을 원하는대로 만들기 위해 편집해야 하는 파일
+
+### how to change app icon and splash screen
+
+- splash screen : 앱이 로드되기 전에 보이는 screen 또는 이미지
+- assets 폴더 안에서 icon과 splash screen을 관리할 수 있다.
