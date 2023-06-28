@@ -106,7 +106,7 @@
 
 - TouchableOpacity 보다 많은 속성을 가지고 있다.
 - 요소를 클릭했을 때 배경색이 바뀌도록 해준다.
-- onPress 속성은 해당 버튼을 눌렀을 때(눌렀다 뗄 때)의 이벤트를 말한다.
+- onPress 속성은 해당 버튼을 눌렀을 때(눌렀다 뗄 때)의 이벤트를 말한다.(onPressIn과 onPressOut의 Combination)
 - onPressIn은 손가락이 그 영역에 들어갈 때, onPressOut은 벗어날 때, onLongPress는 손가락이 영역에 들어가서 오랫동안 머무를 때를 말한다.
 - TouchableOpacity와 달리 underlayColor를 설정해 배경색도 바꿔줄 수 있다.
 - activeOpacity 속성으로 눌렀을 때의 투명도를 조절 가능하다.
@@ -154,4 +154,14 @@
 - `AsyncStorage`는 브라우저의 `localStorage`처럼 사용할 수 있다.(사용법도 동일함)
 - 앱이 처음 실행될 때(useEffect) AsyncStorage에 저장된 toDos를 toDos state에 세팅하는 loadToDos 함수를 실행한다. 이때 저장된 값이 있을 때만 세팅하도록 처리한다.
 - toDo를 추가할 때는 AsyncStorage에 같은 key값으로 저장해준다.
-- localStorage와는 달리 getItem, setItem 처리 시 비동기 처리를 해주어야 한다.
+- `AsyncStorage`는 기기의 디스크에 접근하고 있기 때문에 메모리 등의 문제로 에러가 발생할 수 있다. 따라서 localStorage와는 달리 getItem, setItem 처리 시 비동기 처리를 해주어야 한다.
+
+### todo 삭제하기
+
+- 원래의 toDos를 newToDos로 할당해주고, 클릭한 todo의 key를 가진 todo를 삭제한다. setState를 하기 전에 새로운 객체를 만들고 mutate를 했기 때문에 문제가 없다.
+- 삭제 버튼 icon은 expo vector-icons에서 가져와 사용한다.
+
+### Alert
+
+- RN에서 제공하는 Alert API에서 alert, propmpt 메소드를 사용할 수 있다.(단, propmpt는 iOS only)
+- Alert에서는 사용자가 Alert title과 message, buttons를 커스텀할 수 있다. buttons는 text, onPress, style(iOSonly), isPreferred(iOSonly)를 갖는 객체 배열이다.
