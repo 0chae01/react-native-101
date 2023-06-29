@@ -211,3 +211,18 @@
 
 - splash screen : 앱이 로드되기 전에 보이는 screen 또는 이미지
 - assets 폴더 안에서 icon과 splash screen을 관리할 수 있다.
+
+### building for App Stores
+
+- expo build 명령어로 build 하는 방법은 지원이 종료되어서 [EAS 빌드 방식]('https://docs.expo.dev/build/setup')을 사용해야 한다.
+
+### React Native for Windows & MacOS
+
+- React Native로 Windows와 MacOS에서 작동하는 앱도 만들 수 있다.
+
+### github pages로 웹에 배포하기
+
+- `npm i gh-pages`로 설치 후 package.json에 `"deploy": "gh-pages -d web-build", "predeploy": "expo export:web"` 추가
+- package.json에 `"homepage": "https://깃허브유저네임.github.io/레포지토리명"` 추가
+- `npm run deploy`로 build하기
+- build 폴더명이 web-build로 되어있어서 오류났으나 폴더명 변경으로 해결했다.
