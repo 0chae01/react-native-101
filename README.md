@@ -226,3 +226,14 @@
 - package.json에 `"homepage": "https://깃허브유저네임.github.io/레포지토리명"` 추가
 - `npm run deploy`로 build하기
 - build 폴더명이 web-build로 되어있어서 오류났으나 폴더명 변경으로 해결했다.
+
+### expo의 문제점
+
+- 앱 설정에 관해서 많은 설정을 할 수 없다.
+- native파일에 접근할 수 없고 app.json을 통해서만 앱을 설정할 수 있다.
+- expo는 expo가 만든 infrastructure를 제공한다. 그 infrastructure는 app.json 파일을 보고 App store에 보내는 아이콘을 만들고 볼 수 있도록 한다.
+- expo만으로 구현할 수 있는 수많은 기능들이 있지만, 기초적인 파일들(infrastructure)에 접근할 수 없다는 단점이 있다.
+- 대부분의 경우에는 infrastructure에 접근할 필요가 없지만, expo SDK에 없는 기능을 사용하려면 접근해야하는 경우가 있다.
+- 또한 기본적으로 expo로 만든 앱은 무겁다. 기본적으로 몇몇 SDK를 포함시켜서 앱을 만들기 때문이다.
+- eject를 하면 expo에서 꺼낼 수 있고, infrastructure에 접근할 수 있게 된다.
+- create-react-native-app을 사용하면 infrastructure에 접근할 수도 있고, 모든 expo sdk에 접근 가능하다. 그러나 초기 설정이 필요하다.
