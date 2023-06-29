@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/react-native-101/static/js/main.a991b9e2.js",
+    "static/js/630.54ff7b35.js": "/react-native-101/static/js/630.54ff7b35.js",
+    "static/media/Fontisto.ttf": "/react-native-101/static/media/Fontisto.c0edd68811e0237502fe.ttf",
+    "static/media/MaterialIcons.ttf": "/react-native-101/static/media/MaterialIcons.120b4c7bbd155bd0a04d.ttf",
+    "favicon.ico": "/react-native-101/favicon.ico",
+    "index.html": "/react-native-101/index.html",
+    "favicon-32.png": "/react-native-101/favicon-32.png",
+    "favicon-16.png": "/react-native-101/favicon-16.png",
+    "manifest.json": "/react-native-101/manifest.json",
+    "serve.json": "/react-native-101/serve.json",
+    "main.a991b9e2.js.map": "/react-native-101/static/js/main.a991b9e2.js.map",
+    "630.54ff7b35.js.map": "/react-native-101/static/js/630.54ff7b35.js.map"
+  },
+  "entrypoints": [
+    "static/js/630.54ff7b35.js",
+    "static/js/main.a991b9e2.js"
+  ]
+}
